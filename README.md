@@ -16,8 +16,10 @@ Ao executar o servidor, ele vai estar escutando e disponível em `http://localho
 ## Endpoints
 ### POST /api/saque
 Este endpoint descreve quais e quantas notas são necessárias para formar uma quantia a ser sacada. Para convesar com o endpoint você pode utilizar o comando _curl_:
-```curl -X POST -H "Content-Type: application/json" -d '{"valor": 380}' http://localhost:5000/api/saque
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"valor": 380}' http://localhost:5000/api/saque
 ```
 Você pode substituir o número _380_ no campo _valor_ por qualquer quantia a ser sacada.
 
 ## Testes
+![print de tela dos testes realizados no terminal](./teste.jpeg)
