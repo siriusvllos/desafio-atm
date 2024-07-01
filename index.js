@@ -12,9 +12,10 @@ app.post("/api/saque", async (req, res) => {
   } // ^ Verifica se o valor da requisição (valorTotal) é um num inteiro e positivo
 
   let composicaoSaque = contarNotas(valorTotal);
-  if (valorTotal !== 0) {
+  
+  if (composicaoSaque === "error") {
     return res.status(400).send({error: "O valor não pode ser atendido com as cédulas disponíveis.",});
-  } // ^ Verifica se o valor da requisição pode ser repartido pelas notas disponíveis
+  } 
 
   res.send(composicaoSaque);
 });
@@ -28,7 +29,10 @@ function contarNotas(valorTotal) {
     composicaoSaque[String(nota)] = quantNotas;
     valorTotal %= nota;
   });
-  
+  if (valorTotal !== 0) {
+    return "error";
+  }; // ^ Verifica se o valor da requisição pode ser repartido pelas notas disponíveis
+
   return composicaoSaque;
 }
 app.listen(port, function () {
